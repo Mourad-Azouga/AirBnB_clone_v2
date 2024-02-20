@@ -113,39 +113,40 @@ class HBNBCommand(cmd.Cmd):
         """ Overrides the emptyline method of CMD """
         pass
 
-    def do_create(self, line):
-        """Usage: create <class> <key 1>=<value 2> <key 2>=<value 2> ...
-        Create a new class instance with given keys/values and print its id.
-        """
+    def do_create(self, args):
+        """Create a new instance of a class with given parameters."""
         try:
-            if not line:
-                raise SyntaxError()
-            my_list = line.split(" ")
+            if not args:
+                raise ValueError("** class name missing **")
+
+            arg_list = args.split()
+            class_name = arg_list[0]
+            if class_name not in self.classes:
+                raise ValueError("** class doesn't exist **")
 
             kwargs = {}
-            for i in range(1, len(my_list)):
-                key, value = tuple(my_list[i].split("="))
-                if value[0] == '"':
-                    value = value.strip('"').replace("_", " ")
+            for arg in arg_list[1:]:
+                key, value = arg.split('=')
+                if value[0] == '"' and value[-1] == '"':
+                    value = value[1:-1].replace('_', ' ')
+                elif '.' in value:
+                    value = float(value)
                 else:
                     try:
-                        value = eval(value)
-                    except (SyntaxError, NameError):
+                        value = int(value)
+                    except ValueError:
                         continue
                 kwargs[key] = value
 
-            if kwargs == {}:
-                obj = eval(my_list[0])()
-            else:
-                obj = eval(my_list[0])(**kwargs)
-                storage.new(obj)
-            print(obj.id)
-            obj.save()
+            new_instance = self.classes[class_name](**kwargs)
+            storage.new(new_instance)
+            storage.save()
+            print(new_instance.id)
 
-        except SyntaxError:
-            print("** class name missing **")
-        except NameError:
-            print("** class doesn't exist **")
+        except ValueError as ve:
+            print(ve)
+
+
 
     def help_create(self):
         """ Help information for the create method """

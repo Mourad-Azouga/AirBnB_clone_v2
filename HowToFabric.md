@@ -18,3 +18,29 @@ There are plenty of commands and cool stuff that can be disccovered about Fabric
 ### Fabric and CL options
     The most commont way ot using Fabric is via command-line tool, fab.
 For more options and commands, check our this [site](https://docs.fabfile.org/en/1.13/usage/fab.html)
+
+### CI/CD - Continuous Integration / Continuous Deployment
+    The lean/agile methology is now widely used in the industy as one of its key principles to iterate as fast as possible, apllied to SE it means:
+                    - Code
+                    - Ship your code
+                    - Mearsure it's impact
+                    - Learn from it
+                    - Fix or improve it
+                    - Start over
+    As fast as possible and with small iterations (Hours/Days) instead of (Weeks/Months), one of it's big advantages is that if the development is going in the wrong direction you can quickly and less costly divert back into the right one.
+    From a technical point of vue, quicker iterations mean fewer lines of code being pushed at every deploy, which allows easy perf impact measurement and easy troubleshooting if something goes wrong.
+    This translates into a "Shipping Pipeline" which is often built with multiple tools such as:
+                    - Shipping the code:
+                            .Capistrano
+                            .Fabric
+                    - Encapsulation the code:
+                            .Docker
+                            .Packer
+                    - Testing the code:
+                            .Jenkins
+                            .CircleCi
+                            .Travis
+                    - Measuring the code:
+                            .Datadog
+                            .Newrelic
+                            .Wavefront

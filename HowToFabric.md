@@ -44,3 +44,7 @@ For more options and commands, check our this [site](https://docs.fabfile.org/en
                             .Datadog
                             .Newrelic
                             .Wavefront
+### NGINX Beginner's guide
+    This guide gives a basic introduction to nginx and describes some simple tasks that can be done with it. It is supposed that nginx is already installed on the reader’s machine.
+    nginx has one master process and several worker processes. The main purpose of the master process is to read and evaluate configuration, and maintain worker processes.
+For the full tutorial, consider checking this [site](https://nginx.org/en/docs/beginners_guide.html)

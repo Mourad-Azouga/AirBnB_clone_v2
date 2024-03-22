@@ -24,7 +24,7 @@ def hello():
 def c_is_cool(text):
     """Displays C + input text, changes _ to  """
     text = text.replace("_", " ")
-    return 'C f{text}'
+    return "C {}".format(text)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")

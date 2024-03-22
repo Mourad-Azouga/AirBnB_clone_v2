@@ -68,7 +68,7 @@ def number_odd_or_even(n):
         state = "odd"
     elif n % 2 != 0:
         state = "even"
-    return render_template("5-number.html", n=n, state = state)
+    return render_template("6-number_odd_or_even.html", n=n, state = state)
 
 
 if __name__ == "__main__":

@@ -27,7 +27,7 @@ def c_is_cool(text):
     return "C {}".format(text)
 
 @app.route('/python/<text>', strict_slashes=False)
-def c_is_cool(text):
+def python_route(text):
     """Displays python + input text, changes _ to  """
     text = text.replace("_", " ")
     return "Python {}".format(text)
